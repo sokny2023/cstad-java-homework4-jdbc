@@ -23,7 +23,7 @@ public class UserRepository {
                         /*PropertiesLoader.properties.getProperty("database_url"),
                         PropertiesLoader.properties.getProperty("database_username"),
                         PropertiesLoader.properties.getProperty("database_password")*/
-                        "jdbc:postgresql://localhost:5432/school",
+                        "jdbc:postgresql://localhost:5432/postgres",
                         "postgres",
                         "789sokny"
                 );
