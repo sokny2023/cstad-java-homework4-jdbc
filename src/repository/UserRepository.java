@@ -20,12 +20,12 @@ public class UserRepository {
         PropertiesLoader.LoadPropertiesFile();
         try (
                 Connection connection = DriverManager.getConnection(
-                        /*PropertiesLoader.properties.getProperty("database_url"),
+                        PropertiesLoader.properties.getProperty("database_url"),
                         PropertiesLoader.properties.getProperty("database_username"),
-                        PropertiesLoader.properties.getProperty("database_password")*/
-                        "jdbc:postgresql://localhost:5432/postgres",
+                        PropertiesLoader.properties.getProperty("database_password")
+                        /*"jdbc:postgresql://localhost:5432/postgres",
                         "postgres",
-                        "789sokny"
+                        "789sokny"*/
                 );
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql);

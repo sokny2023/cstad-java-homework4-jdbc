@@ -9,7 +9,7 @@ public class PropertiesLoader {
     public static void LoadPropertiesFile(){
         try(BufferedReader bufferedReader =
                     new BufferedReader(
-                            new FileReader("./Application.properties")
+                            new FileReader("application.properties")
                     );
         )
         {
