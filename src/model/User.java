@@ -2,12 +2,7 @@ package model;
 
 import lombok.*;
 
-@Data
-//@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Setter
-@Getter
+@Data // for setter and getter
 public class User {
     private Integer userId;
     private String userUuid;

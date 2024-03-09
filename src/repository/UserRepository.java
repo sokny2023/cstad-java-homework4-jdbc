@@ -9,10 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class UserRepository {
-    /*public static List<User> userData(){
-        List<User> users = new ArrayList<>();
-        return users;
-    }*/
 
     public static List<User> getAllUsers() {
         String sql = "SELECT * FROM users";
@@ -23,9 +19,6 @@ public class UserRepository {
                         PropertiesLoader.properties.getProperty("database_url"),
                         PropertiesLoader.properties.getProperty("database_username"),
                         PropertiesLoader.properties.getProperty("database_password")
-                        /*"jdbc:postgresql://localhost:5432/postgres",
-                        "postgres",
-                        "789sokny"*/
                 );
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql);
