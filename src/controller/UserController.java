@@ -16,4 +16,8 @@ public class UserController {
     public User searchById(Integer id){
         return userDao.searchById(id);
     }
+
+    public void createUser(User user){
+        userDao.insert(user);
+    }
 }

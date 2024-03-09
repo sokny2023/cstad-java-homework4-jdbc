@@ -1,7 +1,11 @@
 import controller.UserController;
+import model.User;
 import org.nocrala.tools.texttablefmt.BorderStyle;
+import org.nocrala.tools.texttablefmt.CellStyle;
+import org.nocrala.tools.texttablefmt.ShownBorders;
 import org.nocrala.tools.texttablefmt.Table;
 import java.util.Scanner;
+import java.util.UUID;
 
 import view.MenuView;
 
@@ -16,36 +20,34 @@ public class Main {
             int op = scanner.nextInt();
             switch (op){
                 case 1 ->{
-                    Table table = new Table(7, BorderStyle.UNICODE_BOX_DOUBLE_BORDER_WIDE);
-                    table.setColumnWidth(0,20,30);
+                    Table table = new Table(7, BorderStyle.UNICODE_BOX_DOUBLE_BORDER_WIDE, ShownBorders.ALL);
+                    CellStyle cellStyle = new CellStyle(CellStyle.HorizontalAlign.center);
+                    table.setColumnWidth(0,10,15);
                     table.setColumnWidth(1,20,30);
                     table.setColumnWidth(2,20,30);
                     table.setColumnWidth(3,20,30);
-                    table.setColumnWidth(4,20,30);
-                    table.setColumnWidth(5,20,30);
-                    table.setColumnWidth(6,20,30);
+                    table.setColumnWidth(4,10,15);
+                    table.setColumnWidth(5,15,20);
+                    table.setColumnWidth(6,15,20);
                     // header of table
-                    table.addCell("Id");
-                    table.addCell("UUId");
-                    table.addCell("User Name");
-                    table.addCell("User Email");
-                    table.addCell("User Password");
-                    table.addCell("Is Deleted");
-                    table.addCell("Is Verified");
+                    table.addCell("Id", cellStyle);
+                    table.addCell("UUId", cellStyle);
+                    table.addCell("User Name", cellStyle);
+                    table.addCell("User Email", cellStyle);
+                    table.addCell("User Password", cellStyle);
+                    table.addCell("Is Deleted", cellStyle);
+                    table.addCell("Is Verified", cellStyle);
                     // body of table
                     userController.getAllUsers().forEach(e -> {
-                        table.addCell(e.getUserId().toString());
-                        table.addCell(e.getUserUuid());
-                        table.addCell(e.getUserName());
-                        table.addCell(e.getUserEmail());
-                        table.addCell(e.getUserPassword());
-                        table.addCell(e.getIsDeleted().toString());
-                        table.addCell(e.getIsVerified().toString());
+                        table.addCell(e.getUserId().toString(), cellStyle);
+                        table.addCell(e.getUserUuid(), cellStyle);
+                        table.addCell(e.getUserName(), cellStyle);
+                        table.addCell(e.getUserEmail() ,cellStyle);
+                        table.addCell(e.getUserPassword(), cellStyle);
+                        table.addCell(e.getIsDeleted().toString(), cellStyle);
+                        table.addCell(e.getIsVerified().toString(), cellStyle);
                     });
                     System.out.println(table.render());
-
-
-                    //userController.getAllUsers().forEach(System.out::println);
                 }
                 case 2 -> {
                     System.out.print("Enter Id to search: ");
@@ -53,6 +55,18 @@ public class Main {
                 }
                 case 3 -> {
                     System.out.println("3.Create users");
+                    System.out.print("Enter id: ");
+                    int id =scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Name :");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter Email: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Enter Password: ");
+                    String password = scanner.nextLine();
+                    User newUser = new User(id, UUID.randomUUID().toString(),name,email,password,false,false);
+
+                    userController.createUser(newUser);
                 }
                 case 4 -> {
                     System.out.println("4.Read users");
